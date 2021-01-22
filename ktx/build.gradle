@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'com.github.panpf.bintray-publish'
 }
+
+apply from: rootProject.file("secret.gradle")
 
 android {
     compileSdkVersion 30
@@ -11,7 +14,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -45,4 +48,17 @@ dependencies {
     def glide_version = "4.11.0"
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+}
+
+publish {
+    userOrg = 'xch168'                   // bintray.com用户名
+    repoName = 'quick-android'           // 仓库名
+    groupId = 'com.github.android.quick' // jcenter上的路径
+    artifactId = 'quick-ktx'            // 项目名称
+    publishVersion = "0.0.1"            // 版本号
+    desc = 'Android extension for quick develop'              // 描述，不重要
+    website = 'https://github.com/quick-android/Quick-Ktx'    // 网站，不重要；可以填写GitHub中的项目地址
+
+    bintrayUser = bintray_user // bintray.com的用户名
+    bintrayKey = bintray_key   // bintray.com的API key
 }
