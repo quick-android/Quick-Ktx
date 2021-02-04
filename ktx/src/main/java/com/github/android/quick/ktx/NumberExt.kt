@@ -3,14 +3,7 @@ package com.github.android.quick.ktx
 import android.content.res.Resources
 import android.util.TypedValue
 
-val Float.dp
-    get() = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        this,
-        Resources.getSystem().displayMetrics
-    )
-
-val Int.dp
+val Number.dp
     get() = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP,
         this.toFloat(),
